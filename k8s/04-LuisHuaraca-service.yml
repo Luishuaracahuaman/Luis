@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: luishuaraca-api-service
+  namespace: luishuaraca-ns
+  labels:
+    app: luishuaraca-api
+spec:
+  selector:
+    app: luishuaraca-api
+  type: NodePort
+  ports:
+    - port: 8085
+      protocol: TCP
+      targetPort: 8085
+      nodePort: 30080

@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: luishuaraca-ns
+  labels:
+    environment: clase
+    manage-by: kubectl
+    curso: fundamento-de-redes
