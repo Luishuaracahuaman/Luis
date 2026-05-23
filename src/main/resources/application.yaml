@@ -12,11 +12,10 @@ spring:
       mode: always
       schema-locations: classpath:schema.sql
 
-  h2:
-    console:
-      enabled: true
-      settings:
-        web-allow-others: true
+  web:
+    error:
+      include-message: always
+      include-stacktrace: always
 
 server:
   port: ${APP_PORT:8085}

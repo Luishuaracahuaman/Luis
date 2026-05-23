@@ -17,28 +17,33 @@ public class PersonaRest {
 
     @GetMapping
     public Flux<Persona> listarTodos() {
-        return personaService.listarTodos();
+        return personaService.listarTodos()
+                .doOnError(e -> System.err.println("Error al listar: " + e.getMessage()));
     }
 
     @GetMapping("/{id}")
     public Mono<Persona> obtenerPorId(@PathVariable Long id) {
-        return personaService.obtenerPorId(id);
+        return personaService.obtenerPorId(id)
+                .doOnError(e -> System.err.println("Error al obtener por ID: " + e.getMessage()));
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Mono<Persona> guardar(@RequestBody Persona persona) {
-        return personaService.guardar(persona);
+        return personaService.guardar(persona)
+                .doOnError(e -> System.err.println("Error al guardar: " + e.getMessage()));
     }
 
     @PutMapping("/{id}")
     public Mono<Persona> actualizar(@PathVariable Long id, @RequestBody Persona persona) {
-        return personaService.actualizar(id, persona);
+        return personaService.actualizar(id, persona)
+                .doOnError(e -> System.err.println("Error al actualizar: " + e.getMessage()));
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public Mono<Void> eliminar(@PathVariable Long id) {
-        return personaService.eliminar(id);
+        return personaService.eliminar(id)
+                .doOnError(e -> System.err.println("Error al eliminar: " + e.getMessage()));
     }
 }
